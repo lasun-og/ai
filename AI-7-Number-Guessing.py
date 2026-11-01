@@ -1,15 +1,24 @@
-from random import randint
-
-number = randint(1, 100)
 print("AI-7: Guess the Number")
-print("Guess a number from 1 to 100.")
+print("Think of a number from 1 to 100.")
+print("Tell the agent: higher, lower, or correct.")
 
-while True:
-    guess = int(input("Your guess: "))
-    if guess < number:
-        print("Higher!")
-    elif guess > number:
-        print("Lower!")
-    else:
-        print("Correct!")
+low = 1
+high = 100
+
+while low <= high:
+    guess = (low + high) // 2
+    print("Is your number", guess, "?")
+    answer = input("Your answer: ").lower()
+
+    if answer == "higher":
+        low = guess + 1
+    elif answer == "lower":
+        high = guess - 1
+    elif answer == "correct":
+        print("The agent guessed your number!")
         break
+    else:
+        print("Please enter higher, lower, or correct.")
+
+if low > high:
+    print("Your answers did not match a number from 1 to 100.")
